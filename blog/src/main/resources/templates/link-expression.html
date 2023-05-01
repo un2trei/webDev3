@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://wwww.whymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Link Expressions Demo</title>
+  <link th:href="@{/css/demo.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Link Expressions Demo:</h1>
+<a th:href="@{variable-expression}">Variable expression Demo</a><br>
+<a th:href="@{/selection-expression}">Selection Expression Demo</a>
+<p>
+  <a th:href="@{link-expression/{id}(id=1)}">Link with parameter</a>
+</p>
+</body>
+</html>
