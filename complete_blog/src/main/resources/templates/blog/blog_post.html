@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<div th:replace="blog/header :: header"></div>
+<body>
+<div th:replace="blog/header :: navbar"></div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <h2 th:text="${post.title}"></h2>
+            <hr/>
+            <h4 th:text="${post.shortDescription}"></h4>
+            <hr/>
+            <div th:text="${post.content}"></div>
+
+
+            <hr/>
+            <div>
+                <h3>Comments:</h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Leave a comment</h2>
+                    </div>
+                    <div class="card-body">
+                        <form
+                                role="form"
+                                method="post"
+                                th:action="@{/{postUrl}/comments(postUrl=${post.url})}"
+                                th:object="${comment}"
+                        >
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <input
+                                            class="form-control"
+                                            id="name"
+                                            name="name"
+                                            placeholder="Enter your name"
+                                            th:field="*{name}"
+                                            type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <input
+                                            class="form-control"
+                                            id="email"
+                                            name="email"
+                                            placeholder="Enter your email"
+                                            th:field="*{email}"
+                                            type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <textarea
+                                            class="form-control"
+                                            id="content"
+                                            name="content"
+                                            placeholder="Enter your comment"
+                                            rows="8"
+                                            th:field="*{content}"
+                                            type="text"
+                                    >
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <button
+                                        class="btn btn-primary"
+                                        type="submit"
+                                        >
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div th:replace="blog/search :: search">
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div th:replace="blog/footer :: footer"></div>
+</body>
+</html>
